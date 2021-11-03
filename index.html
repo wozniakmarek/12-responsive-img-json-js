@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<title>Zadanie rekrutacyjne - Marek Woźniak</title>
+</head>
+<body>
+        <div class="container">
+            <div class="row" id="app">  
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <script>
+            const shopData = [ {
+                "img":"http:\/\/lorempixel.com\/400\/800\/",
+                "desc":"Duis ac arcu vitae diam elementum suscipit.",
+                "price":"\u20ac189.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/300\/300\/",
+                "desc":"Donec ac tortor ut lorem elementum condimentum eget ut urna.",
+                "price":"\u20ac39.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/200\/700\/",
+                "desc":"In a erat eu tortor imperdiet facilisis.",
+                "price":"\u20ac659.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/500\/200\/",
+                "desc":"Anon non enim eu lorem elementum sollicitudin eget non ex.",
+                "price":"\u20ac9.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/400\/800\/",
+                "desc":"Duis ac arcu vitae diam elementum suscipit.",
+                "price":"\u20ac189.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/350\/300\/",
+                "desc":"Mauris nec neque sed est rhoncus scelerisque.",
+                "price":"\u20ac49.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/600\/400\/",
+                "desc":"In euismod purus quis diam elementum imperdiet.",
+                "price":"\u20ac1389.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/200\/700\/",
+                "desc":"Duis elementum nisi non aliquet placerat.",
+                "price":"\u20ac123.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/300\/400\/",
+                "desc":"Donec volutpat metus id turpis cursus volutpat.",
+                "price":"\u20ac87.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/400\/300\/",
+                "desc":"Donec dictum nibh vitae libero venenatis, at faucibus orci rhoncus.",
+                "price":"\u20ac53.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/500\/500\/",
+                "desc":"Donec ac elit at arcu mollis consectetur.",
+                "price":"\u20ac29.00"
+            },
+            {
+                "img":"http:\/\/lorempixel.com\/400\/400\/",
+                "desc":"Suspendisse fermentum libero sed lorem pellentesque, eget rhoncus ligula placerat.",
+                "price":"\u20ac169.00"
+            }
+            ];
+
+
+
+    function shopTemplate(shop){
+        return`
+        <div class="col-xl-3 col-lg-4 col-md-6 col-12 p-3">
+            <div class="wrapper">
+            <img src="${shop.img}" id="item${shop.id}" alt="${shop.desc}" onclick="showDesc(this)"">
+            <button class="button" id="${shop.id}" onclick="showButtDesc(this)"> <a href="#">Add to card</a></button> 
+            <div class="description py-3">
+            <p>Demo Name Product</p>
+            <p class="price">${shop.price}</p>
+            </div>
+            </div>
+        </div>
+        `;
+    }
+
+
+
+    shopData.forEach((item, i) => {
+    item.id = i + 1;
+    });
+    var data = []
+    data.push(shopData);
+
+    function showButtDesc(x){
+        var idbut = x.getAttribute("id") -1;
+        console.log(shopData[idbut].desc);
+    }
+
+    function showDesc(x){
+            var alt = x.getAttribute("alt")
+            console.log(alt)
+    }
+        
+    document.getElementById("app").innerHTML = `
+    ${shopData.map(shopTemplate).join("")}
+    `;
+
+    </script>
+</body>
+</html>
+
+
